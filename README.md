@@ -26,7 +26,8 @@ model_id = "< Enter the model identity for the device model you would like the d
 * device_id - The device identity for your device.  It does not already need to be registered with IoT Central.  For example: Device123
 
 * scope_id -  The Scope identity for your IoT Central application you can find this in your IoT Central application in the Adminstrator -> Device Connection page
-    []()
-* group_symmetric_key - 
-
+    ![Where to get scope id](https://github.com/iot-for-all/iot-central-batch-telemetry-with-python/blob/main/assets/scope_id.png)
+* group_symmetric_key - The Group SAS token for your IoT Central application can be found in Administration -> Device connection
+    ![Where to get group symmetric key](https://github.com/iot-for-all/iot-central-batch-telemetry-with-python/blob/main/assets/group_sas_key.png)
 * model_id - 
+    ![Where to get model id](https://github.com/iot-for-all/iot-central-batch-telemetry-with-python/blob/main/assets/model_id.png)
