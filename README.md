@@ -10,7 +10,7 @@ Batching works like a multiplexer/de-multiplexer.  The individual telemetry mess
 
 Also included is a very simple DPS registration routine using the DPS HTTPS REST interface.
 
-## Prerequisits
+## Prerequisite
 
 You need to install the [Requests: HTTP for humans](https://requests.readthedocs.io/en/master/) Python library using:
 
