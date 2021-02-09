@@ -10,6 +10,14 @@ Batching works like a multiplexer/de-multiplexer.  The individual telemetry mess
 
 Also included is a very simple DPS registration routine using the DPS HTTPS REST interface.
 
+## Prerequisits
+
+You need to install the [Requests: HTTP for humans](https://requests.readthedocs.io/en/master/) Python library using:
+
+```
+python -m pip install requests
+```
+
 ## Using
 
 Just change lines 170 - 175 to provide the necessary information about your device and the Azure IoT Central application you wish to connect to.  You need the following pieces of information:
@@ -31,3 +39,11 @@ model_id = "< Enter the model identity for the device model you would like the d
     ![Where to get group symmetric key](https://github.com/iot-for-all/iot-central-batch-telemetry-with-python/blob/main/assets/group_sas_key.png)
 * model_id - The model identity for the device model you would like the device identified with, found in Device templates -> select the device template -> select the model interface -> click 'View identity'
     ![Where to get model id](https://github.com/iot-for-all/iot-central-batch-telemetry-with-python/blob/main/assets/model_id.png)
+
+Then to run use:
+
+```
+python batch.py
+```
+
+or run from within your prefered IDE.
