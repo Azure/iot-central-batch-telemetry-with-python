@@ -29,5 +29,5 @@ model_id = "< Enter the model identity for the device model you would like the d
     ![Where to get scope id](https://github.com/iot-for-all/iot-central-batch-telemetry-with-python/blob/main/assets/scope_id.png)
 * group_symmetric_key - The Group SAS token for your IoT Central application can be found in Administration -> Device connection
     ![Where to get group symmetric key](https://github.com/iot-for-all/iot-central-batch-telemetry-with-python/blob/main/assets/group_sas_key.png)
-* model_id - 
+* model_id - The model identity for the device model you would like the device identified with, found in Device templates -> select the device template -> select the model interface -> click 'View identity'
     ![Where to get model id](https://github.com/iot-for-all/iot-central-batch-telemetry-with-python/blob/main/assets/model_id.png)
