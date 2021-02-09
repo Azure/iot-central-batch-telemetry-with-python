@@ -8,7 +8,7 @@ The Azure IoT Python SDK only supports MQTT and sending a batch only works using
 
 Batching works like a multiplexer/de-multiplexer.  The individual telemetry messages are bundled into a single POST body and sent to the IoT Hub.  When received at the IoT Hub the messages are de-multiplexed into the individual messages and passed into IoT Central.
 
-Also included is a very simple DPS registration routine using the DPS HTTPS REST interface.
+Also included is a very simple Device Provisioning Service (DPS) registration routine using the DPS HTTPS REST interface.
 
 ## Prerequisite
 
