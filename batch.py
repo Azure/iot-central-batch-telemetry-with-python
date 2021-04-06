@@ -127,8 +127,11 @@ def send_batch_data(device_id, hub_host, device_key, data):
     start_index = 0
     batch_size = 0
     for x in data:
-        encoded = base64.b64encode(str.encode(json.dumps(x)))
-        payload_chunk = '{{"body":"{0}"'.format(encoded.decode('utf-8'))
+        if "body" in x.keys():
+            encoded = base64.b64encode(str.encode(json.dumps(x["body"])))
+            payload_chunk = '{{"body":"{0}"'.format(encoded.decode('utf-8'))
+        else:
+            payload_chunk = '{{"body":""'
         if "properties" in x.keys():
             payload_chunk += ', "properties":{0},"$.ct":"application%2Fjson","$.ce":"utf-8"}}'.format(x["properties"])
         else:
@@ -159,12 +162,12 @@ def send_batch_data(device_id, hub_host, device_key, data):
 # note: the property 'iothub-app-iothub-creation-time-utc' allows the ingestion time into the hub to be overridden with the supplied UTC ISO-3339 format time stamp
 # other custom message properties can be included here as well if needed.  The properties dictionary is optional.
 data = [
-        { 'temp': 10, 'humidity': 70, 'properties':{'iothub-app-iothub-creation-time-utc':'{0}'.format((datetime.utcnow()- timedelta(hours=0, minutes=10)).strftime("%Y-%m-%dT%H:%M:%SZ"))} },
-        { 'temp': 20, 'humidity': 80, 'properties':{'iothub-app-iothub-creation-time-utc':'{0}'.format((datetime.utcnow()- timedelta(hours=0, minutes=8)).strftime("%Y-%m-%dT%H:%M:%SZ"))} },
-        { 'temp': 30, 'humidity': 90, 'properties':{'iothub-app-iothub-creation-time-utc':'{0}'.format((datetime.utcnow()- timedelta(hours=0, minutes=6)).strftime("%Y-%m-%dT%H:%M:%SZ"))} },
-        { 'temp': 40, 'humidity': 100, 'properties':{'iothub-app-iothub-creation-time-utc':'{0}'.format((datetime.utcnow()- timedelta(hours=0, minutes=4)).strftime("%Y-%m-%dT%H:%M:%SZ"))} },
-        { 'temp': 50, 'humidity': 110, 'properties':{'iothub-app-iothub-creation-time-utc':'{0}'.format((datetime.utcnow()- timedelta(hours=0, minutes=2)).strftime("%Y-%m-%dT%H:%M:%SZ"))} },
-        { 'temp': 60, 'humidity': 120, 'properties':{'iothub-app-iothub-creation-time-utc':'{0}'.format(datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"))}}
+        { 'body': { 'temp': 10, 'humidity': 70 }, 'properties':{'iothub-app-iothub-creation-time-utc':'{0}'.format((datetime.utcnow()- timedelta(hours=0, minutes=10)).strftime("%Y-%m-%dT%H:%M:%SZ"))} },
+        { 'body': { 'temp': 20, 'humidity': 80 }, 'properties':{'iothub-app-iothub-creation-time-utc':'{0}'.format((datetime.utcnow()- timedelta(hours=0, minutes=8)).strftime("%Y-%m-%dT%H:%M:%SZ"))} },
+        { 'body': { 'temp': 30, 'humidity': 90 }, 'properties':{'iothub-app-iothub-creation-time-utc':'{0}'.format((datetime.utcnow()- timedelta(hours=0, minutes=6)).strftime("%Y-%m-%dT%H:%M:%SZ"))} },
+        { 'body': { 'temp': 40, 'humidity': 100 }, 'properties':{'iothub-app-iothub-creation-time-utc':'{0}'.format((datetime.utcnow()- timedelta(hours=0, minutes=4)).strftime("%Y-%m-%dT%H:%M:%SZ"))} },
+        { 'body': { 'temp': 50, 'humidity': 110 }, 'properties':{'iothub-app-iothub-creation-time-utc':'{0}'.format((datetime.utcnow()- timedelta(hours=0, minutes=2)).strftime("%Y-%m-%dT%H:%M:%SZ"))} },
+        { 'body': { 'temp': 60, 'humidity': 120 }, 'properties':{'iothub-app-iothub-creation-time-utc':'{0}'.format(datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"))}}
     ]
 
 # fill in the device identity
